@@ -7,14 +7,14 @@ import KAGO_framework.view.DrawTool;
  * Repräsentiert eine Kugel (einen Kreis), der in eine Schlange eingefügt werden soll. Dabei muss jeder QueueBall immer
  * seinen Vorgänger kennen, damit er zu ihm Abstand halten kann.
  */
-public class Ball extends GraphicalObject {
+public class Target extends GraphicalObject {
 
     /**
      * Erzeugt einen neuen QueueBall
      * @param x Startposition x
      * @param y Startposition y
      */
-    public Ball(double x, double y){
+    public Target(double x, double y){
         this.x = x;
         this.y = y;
     }
