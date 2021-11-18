@@ -11,10 +11,12 @@ import my_project.model.Target;
 public class ProgramController {
 
     //Attribute
-
+    private int winCounter;
 
     // Referenzen
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
+    private Spaceship theShip;
+    private Target target1;
 
     /**
      * Konstruktor
@@ -32,15 +34,23 @@ public class ProgramController {
      * Sie erstellt die leeren Datenstrukturen, zu Beginn nur eine Queue
      */
     public void startProgram() {
+        winCounter = 0;
         // Erstelle ein Objekt der Klasse Target und lasse es zeichnen
-        Target target1 = new Target(650,100);
+        target1 = new Target(650,100);
         viewController.draw(target1);
         // Erstelle ein Objekt der Klasse Spaceship und lasse es zeichnen und auf Eingaben reagieren
-        Spaceship theShip = new Spaceship(50,500);
+        theShip = new Spaceship();
         viewController.draw(theShip);
         viewController.register(theShip);
         // Lade und benenne einen Ton
         viewController.getSoundController().loadSound("src/main/resources/sound/whoosh.mp3","whoosh",false);
+        // Spielanleitung in Konsole ausgeben
+        System.out.println();
+        System.out.println("********** SUPER RAUMSCHIFF SPIEL *******************");
+        System.out.println("Steuerung: Zielen mit Links/Rechts, Losfliegen mit Leertaste!");
+        System.out.println("Was für ein Spaß!");
+        System.out.println("**********************************************************");
+        System.out.println();
     }
 
     /**
@@ -48,6 +58,10 @@ public class ProgramController {
      * @param dt Zeit seit letzter Frame
      */
     public void updateProgram(double dt){
-
+        if(theShip.collidesWith(target1)){
+            winCounter++;
+            System.out.println(winCounter + "mal GEWONNEN!!!");
+            theShip.reset();
+        }
     }
 }
