@@ -17,6 +17,8 @@ public class Target extends GraphicalObject {
     public Target(double x, double y){
         this.x = x;
         this.y = y;
+        width = 20;
+        height = 10;
     }
 
 
